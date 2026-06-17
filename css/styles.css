@@ -1,0 +1,655 @@
+/* ============================================================
+   Maria Hanna Babasa — Redesigned Portfolio Stylesheet
+   Aesthetic: Editorial, Pastel, Playful Grid
+   Fonts: Playfair Display (display) · Inter (body) · JetBrains Mono (mono)
+   ============================================================ */
+
+/* ── CSS VARIABLES ── */
+:root {
+  /* Light Editorial Palette */
+  --bg:           #FDFDFB; /* Soft cream/off-white background */
+  --surface:      #FFFFFF;
+  --text:         #1A1A1A; /* Near black for high contrast */
+  --muted:        #555555;
+  --border:       #1A1A1A; /* Hard dark borders for elements */
+  --border-light: #E5E7EB; /* Soft borders for grid/dividers */
+
+  /* Pastel Accents */
+  --accent-pink:  #FFD1DC;
+  --accent-blue:  #C2E2E8;
+  --accent-green: #D1E2C4;
+  --accent-yellow:#FEF0C5;
+
+  /* Typography */
+  --font-display: 'Playfair Display', serif; 
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Border Radii */
+  --radius-sm:  8px;
+  --radius-md:  16px;
+  --radius-lg:  24px;
+  --radius-pill: 50px;
+
+  --transition: 0.25s ease;
+  --max-w: 1200px;
+}
+
+/* ── RESET & BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* ── UTILITY ── */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--accent-pink);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--text);
+  font-weight: bold;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+/* ── NAVBAR ── */
+#top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: transparent; /* Allows us to style a container inside */
+  padding: 1rem 1rem 0; /* Creates the spacing around the white navbar */
+}
+
+.navbar-wrapper {
+  background: var(--surface);
+  border-radius: 30px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* This keeps the logo perfectly dead center */
+  align-items: center;
+  height: 80px;
+  padding: 0 2rem;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-style: italic; /* Gives it that slightly cursive, elegant look */
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  padding: 0;
+}
+
+/* Align left links to the right edge of their grid column */
+.left-links {
+  justify-content: flex-end;
+}
+
+/* Group the right links and icons together */
+.right-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text);
+}
+
+/* Icon Buttons Setup */
+.nav-icons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  color: var(--text);
+  font-size: 0.9rem;
+  transition: all var(--transition);
+}
+
+.icon-btn:hover {
+  background: var(--text);
+  color: var(--surface);
+  border-color: var(--text);
+}
+
+/* ── HERO SECTION ── */
+.hero-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center; /* Centers the whole container vertically */
+  padding: 120px 2rem 80px;
+  
+  /* The Grid Paper Effect */
+  background-color: var(--bg);
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--border-light) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-light) 1px, transparent 1px);
+}
+
+/* New Layout Wrapper to split columns */
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 4rem;
+}
+
+/* Left Column Styling */
+.hero-content {
+  flex: 1;
+  text-align: left; /* Forces left alignment */
+}
+
+.pill-badge {
+  display: inline-block;
+  background-color: var(--accent-blue);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.highlight-pink {
+  background-color: var(--accent-pink);
+  padding: 0 16px;
+  display: inline-block;
+}
+
+.hero-intro {
+  font-size: 1.10rem;
+  font-weight: 500;
+  color: var(--muted);
+  max-width: 550px; /* Keeps text lines from getting too long */
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start; /* Changed from center to left */
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--accent-pink);
+}
+
+.btn:hover {
+  background: var(--text);
+  color: var(--surface);
+}
+
+.btn:hover::before {
+  background-color: var(--surface);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+.btn-outline::before {
+  background-color: var(--accent-blue);
+}
+
+/* ── RIGHT COLUMN: IMAGE COLLAGE ── */
+.hero-images {
+  flex: 1;
+  position: relative;
+  height: 450px;
+  margin-top: 50px;
+}
+
+/* ── NEW BASE IMAGE STYLING ── */
+.collage-img {
+  position: absolute;
+  object-fit: cover;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s ease;
+  background-color: transparent;
+}
+
+.collage-img:hover {
+  transform: scale(1.05) translateZ(0);
+  z-index: 10 !important; /* Added !important so it always pops to the front on hover */
+}
+
+/* ── POSITIONING FIXES ── */
+.polaroid {
+  width: 200px;
+  height: 240px;
+  top: 0;
+  right: 28%; 
+  transform: rotate(8deg);
+  z-index: 1;
+}
+
+.camera {
+  width: 340px;
+  height: auto; 
+  bottom: 15%;
+  right: 30%;
+  transform: rotate(-3deg);
+  z-index: 2;
+}
+
+.photobooth {
+  width: 150px;
+  height: auto;
+  top: 10%;
+  right: 0;
+  transform: rotate(-6deg);
+  z-index: 3;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 968px) {
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+  
+  .hero-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+  
+  .hero-images {
+    width: 100%;
+    height: 350px;
+  }
+}
+/* ── ABOUT / SKILLS / CONTACT SECTIONS ── */
+.about-grid, .skills-grid, .contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.about-card, .contact-form-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: 4px 4px 0px var(--border); /* Hard shadow effect */
+}
+
+.about-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Progress bars simplified for minimal look */
+.skill-bar-track {
+  height: 6px;
+  background: var(--border-light);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: var(--text);
+  border-radius: var(--radius-pill);
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+/* ── PROJECTS SECTION (PASTEL COLUMNS) ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Pastel Utility Classes */
+.bg-pink { background-color: var(--accent-pink); }
+.bg-blue { background-color: var(--accent-blue); }
+.bg-green { background-color: var(--accent-green); }
+.bg-yellow { background-color: var(--accent-yellow); }
+
+.project-img-wrap {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.project-caption {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* ── FORM ELEMENTS ── */
+.form-group label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  margin-bottom: 1.5rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-width: 2px;
+}
+
+/* ── FOOTER ── */
+#main-footer {
+  background: var(--accent-pink);
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-name { font-size: clamp(2.5rem, 10vw, 4rem); }
+  .about-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+/* ── SHAPE STYLING ── */
+.shape {
+    position: absolute;
+    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.1)); 
+    transition: transform 0.2s ease;
+    background-color: transparent; 
+    z-index: 4;
+}
+
+/* ── INDIVIDUAL SHAPE PLACEHOLDERS & STYLING ── */
+
+.star {
+    width: 50px;
+    height: 50px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    top: 20px;
+    right: 30px;
+    transform: rotate(-15deg);
+    background-color: #ffd700; 
+}
+
+.heart {
+  position: absolute;
+  width: 50px; 
+  height: 50px;
+  top: 40px;
+  left: 70px;
+  transform: rotate(-20deg);
+  z-index: 4;
+}
+
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 40px; 
+  border-radius: 25px 25px 0 0;
+  background-color: #ffb6c1; 
+}
+
+.heart::before {
+  left: 25px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+
+.sparkle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 40px;
+  right: 120px;
+  transform: rotate(-15deg);
+  z-index: 4;
+
+  background:
+    radial-gradient(circle at 0 0, transparent 20px, #ffd700 21px) bottom right,
+    radial-gradient(circle at 100% 0, transparent 20px, #ffd700 21px) bottom left,
+    radial-gradient(circle at 0 100%, transparent 20px, #ffd700 21px) top right,
+    radial-gradient(circle at 100% 100%, transparent 20px, #ffd700 21px) top left;
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+
+.doodle {
+    width: 50px;
+    height: 30px;
+    border: 2px dashed #a9a9a9;
+}
+
+.doodle-1 {
+    bottom: 50px;
+    left: 10px;
+    transform: rotate(20deg);
+}
+
+.doodle-2 {
+    top: 140px;
+    left: 100px;
+    transform: rotate(-30deg);
+    width: 40px; 
+    height: 20px;
+    opacity: 50%;
+}

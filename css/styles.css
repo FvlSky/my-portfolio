@@ -1,20 +1,12 @@
-/* ============================================================
-   Maria Hanna Babasa — Redesigned Portfolio Stylesheet
-   Aesthetic: Editorial, Pastel, Playful Grid
-   Fonts: Playfair Display (display) · Inter (body) · JetBrains Mono (mono)
-   ============================================================ */
-
-/* ── CSS VARIABLES ── */
 :root {
-  /* Light Editorial Palette */
-  --bg:           #FDFDFB; /* Soft cream/off-white background */
+  --bg:           #FDFDFB;
   --surface:      #FFFFFF;
-  --text:         #1A1A1A; /* Near black for high contrast */
+  --text:         #1A1A1A;
   --muted:        #555555;
-  --border:       #1A1A1A; /* Hard dark borders for elements */
-  --border-light: #E5E7EB; /* Soft borders for grid/dividers */
+  --border:       #1A1A1A; 
+  --border-light: #E5E7EB;
 
-  /* Pastel Accents */
+  /* Pastels */
   --accent-pink:  #FFD1DC;
   --accent-blue:  #C2E2E8;
   --accent-green: #D1E2C4;
@@ -68,10 +60,6 @@ a {
   transition: opacity var(--transition);
 }
 
-a:hover {
-  opacity: 0.7;
-}
-
 /* ── UTILITY ── */
 .container {
   max-width: var(--max-w);
@@ -103,6 +91,20 @@ a:hover {
   font-weight: bold;
 }
 
+.section-label-blue {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--accent-blue);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--text);
+  font-weight: bold;
+}
+
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -119,21 +121,22 @@ a:hover {
   left: 0;
   right: 0;
   z-index: 100;
-  background: transparent; /* Allows us to style a container inside */
-  padding: 1rem 1rem 0; /* Creates the spacing around the white navbar */
+  background: transparent;
+  padding: 1rem 1rem 0; 
 }
 
 .navbar-wrapper {
   background: var(--surface);
-  border-radius: 30px;
+  border-radius: 50px;
   max-width: var(--max-w);
   margin: 0 auto;
-  border-bottom: 1px solid var(--border-light);
+  margin-top: 1rem;
+  border: solid 1px var(--border);
 }
 
 .navbar {
   display: grid;
-  grid-template-columns: 1fr auto 1fr; /* This keeps the logo perfectly dead center */
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   height: 80px;
   padding: 0 2rem;
@@ -141,7 +144,7 @@ a:hover {
 
 .nav-logo {
   font-family: var(--font-display);
-  font-style: italic; /* Gives it that slightly cursive, elegant look */
+  font-style: italic; 
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--text);
@@ -157,17 +160,15 @@ a:hover {
   padding: 0;
 }
 
-/* Align left links to the right edge of their grid column */
 .left-links {
   justify-content: flex-end;
 }
 
-/* Group the right links and icons together */
 .right-nav {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .nav-link {
@@ -183,7 +184,7 @@ a:hover {
   color: var(--text);
 }
 
-/* Icon Buttons Setup */
+/* Icon Buttons */
 .nav-icons {
   display: flex;
   gap: 0.75rem;
@@ -212,10 +213,9 @@ a:hover {
 .hero-section {
   min-height: 80vh;
   display: flex;
-  align-items: center; /* Centers the whole container vertically */
+  align-items: center;
   padding: 120px 2rem 80px;
   
-  /* The Grid Paper Effect */
   background-color: var(--bg);
   background-size: 40px 40px;
   background-image: 
@@ -223,7 +223,6 @@ a:hover {
     linear-gradient(to bottom, var(--border-light) 1px, transparent 1px);
 }
 
-/* New Layout Wrapper to split columns */
 .hero-layout {
   display: flex;
   align-items: center;
@@ -234,10 +233,10 @@ a:hover {
   gap: 4rem;
 }
 
-/* Left Column Styling */
+/* Left Column */
 .hero-content {
   flex: 1;
-  text-align: left; /* Forces left alignment */
+  text-align: left;
 }
 
 .pill-badge {
@@ -270,11 +269,36 @@ a:hover {
   display: inline-block;
 }
 
+.highlight-pink-v2 {
+  background-color: var(--accent-pink);
+  padding: 0 6px;
+  display: inline-block;
+}
+
+.highlight-blue {
+  background-color: var(--accent-blue);
+  color: var(--text);
+  padding: 2px 6px;
+  border-radius: 0;
+}
+
+.highlight-yellow {
+  background-color: var(--accent-yellow);
+  color: var(--text);
+  padding: 2px 6px;
+  border-radius: 0;
+}
+
+.underline {
+  text-underline-offset: 4px;
+}
+
+
 .hero-intro {
   font-size: 1.10rem;
   font-weight: 500;
   color: var(--muted);
-  max-width: 550px; /* Keeps text lines from getting too long */
+  max-width: 550px;
   margin-bottom: 2.5rem;
   line-height: 1.6;
 }
@@ -282,7 +306,7 @@ a:hover {
 .hero-actions {
   display: flex;
   gap: 1rem;
-  justify-content: flex-start; /* Changed from center to left */
+  justify-content: flex-start;
 }
 
 /* ── BUTTONS ── */
@@ -652,4 +676,61 @@ a:hover {
     width: 40px; 
     height: 20px;
     opacity: 50%;
+}
+
+/* Add this to your styles.css */
+.curtain-separator {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background-color: var(--bg); /* matches hero section bg */
+}
+
+/* ── FEATURE LISTS (Hobbies & Goals) ── */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.feature-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1.5px solid var(--border);
+  /* Added a subtle shadow to the icons to match your cards */
+  box-shadow: 2px 2px 0px var(--border); 
+}
+
+/* Styles the new SVG icons */
+.feature-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--text);
+}
+
+.feature-item strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.feature-item p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
 }

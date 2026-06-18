@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Paintbrush handle -->
+  <path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/>
+  <!-- Paint blob at tip -->
+  <path d="M9 8c-2 2.5-2 5-1 7 1.5 2.5 5 3 6.5 1.5"/>
+  <!-- Palette circle -->
+  <circle cx="5.5" cy="18.5" r="2.5"/>
+  <path d="M3.5 18.5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5"/>
+</svg>

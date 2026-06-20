@@ -64,9 +64,6 @@ a {
 
 /* ════════════════════════════════════════════════════════════════
    SHARED / GLOBAL COMPONENTS
-   Used across multiple page sections (layout shell, section headers,
-   buttons, text highlights, the reusable "card" component, the card
-   grid system, tags, and form elements).
    ════════════════════════════════════════════════════════════════ */
 
 /* ── Layout shell ── */
@@ -81,7 +78,7 @@ a {
   margin-top: -60px
 }
 
-/* ── Section header (eyebrow + title), used by About/Skills/Projects/Contact ── */
+/* ── Section header */
 .section-header {
   text-align: center;
   margin-bottom: 50px;
@@ -124,7 +121,7 @@ a {
   letter-spacing: -0.02em;
 }
 
-/* ── Buttons, used in Hero / Projects / Contact ── */
+/* ── Buttons ── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -169,7 +166,7 @@ a {
   background-color: var(--accent-blue);
 }
 
-/* ── Text highlight utilities, used in Hero (name) and About (bio copy) ── */
+/* ── Text highlight utilities ── */
 .highlight-pink {
   background-color: var(--accent-pink);
   padding: 0 16px;
@@ -187,7 +184,7 @@ a {
   text-underline-offset: 4px;
 }
 
-/* ── Card component, used by About / Skills / Contact cards ── */
+/* ── Card component ── */
 .about-card, .contact-form-wrap {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -220,14 +217,14 @@ a {
   margin-top: 0.4rem;
 }
 
-/* ── Card grid system, used by About / Skills / Contact ── */
+/* ── Card grid system ── */
 .about-grid, .skills-grid, .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
-/* ── Tag pill, used in About (scholar badge) ── */
+/* ── Tag pill ── */
 .tag {
   display: inline-block;
   font-family: var(--font-mono);
@@ -241,7 +238,7 @@ a {
   text-transform: uppercase;
 }
 
-/* ── Form elements, used in Skills (bar labels) and Contact (form) ── */
+/* ── Form elements ── */
 .form-group label {
   font-family: var(--font-mono);
   text-transform: uppercase;
@@ -288,7 +285,7 @@ a {
   .about-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; }
 }
 
-/* ── Scroll reveal, used by About / Skills / Projects / Contact cards ── */
+/* ── Scroll reveal ── */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1152,7 +1149,7 @@ ul.skills-list {
    PROJECTS SECTION (#projects)
    ════════════════════════════════════════════════════════════════ */
 
-/* ── Carousel wrapper: positions nav arrows ── */
+/* ── Carousel wrapper ── */
 .projects-carousel-wrap {
   position: relative;
   display: flex;
@@ -1160,7 +1157,6 @@ ul.skills-list {
   gap: 1rem;
 }
 
-/* ── The scrollable track ── */
 .projects-carousel {
   display: flex;
   gap: 1.5rem;
@@ -1171,7 +1167,7 @@ ul.skills-list {
   padding-top: 10px;
 }
 
-/* ── Each card: fixed width so exactly 4 show at once ── */
+/* ── Each card ── */
 .project-card {
   flex: 0 0 calc(35% - 0.75rem);
   min-width: 0;
@@ -1331,13 +1327,6 @@ ul.skills-list {
     grid-template-columns: 1fr;
   }
 }
-
-/* ════════════════════════════════════════════════════════════════
-   CONTACT SECTION (#contact)
-   This section reuses shared components defined above:
-   .contact-grid, .about-card / .contact-form-wrap, and .form-group.
-   No section-specific rules beyond those shared ones.
-   ════════════════════════════════════════════════════════════════ */
 
 /* ════════════════════════════════════════════════════════════════
    FOOTER

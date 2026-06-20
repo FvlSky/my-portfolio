@@ -1,53 +1,60 @@
 /* ============================================================
    Maria Hanna Babasa — Portfolio JavaScript
-   Features:
-   - Contact form alert & validation
-   - Dark / Light mode toggle
-   - Active nav link on scroll
-   - Scroll-triggered skill bar animations
-   - Scroll-triggered reveal animations
-   - Mobile hamburger menu
    ============================================================ */
 
-/* ── WAIT FOR DOM ── */
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── 1. THEME TOGGLE ── */
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon   = document.getElementById('theme-icon');
-  const body        = document.body;
+  /* ── 1. PROJECT CAROUSEL ── */
+  const carousel = document.getElementById('projectsCarousel');
+  const btnLeft  = document.querySelector('.carousel-btn-left');
+  const btnRight = document.querySelector('.carousel-btn-right');
 
-  // Load saved preference
-  const savedTheme = localStorage.getItem('portfolio-theme');
-  if (savedTheme === 'light') {
-    body.classList.add('light-mode');
-    themeIcon.textContent = '🌙';
+  function updateCarouselBtns() {
+    const atStart = carousel.scrollLeft <= 4;
+    const atEnd    = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 4;
+    btnLeft.hidden  = atStart;
+    btnRight.hidden = atEnd;
   }
 
-  themeToggle.addEventListener('click', () => {
-    const isLight = body.classList.toggle('light-mode');
-    themeIcon.textContent = isLight ? '🌙' : '☀️';
-    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+  btnRight.addEventListener('click', () => {
+    carousel.scrollLeft += carousel.clientWidth;
+    setTimeout(updateCarouselBtns, 350);
   });
+
+  btnLeft.addEventListener('click', () => {
+    carousel.scrollLeft -= carousel.clientWidth;
+    setTimeout(updateCarouselBtns, 350);
+  });
+
+  carousel.addEventListener('scroll', updateCarouselBtns, { passive: true });
+  window.addEventListener('resize', updateCarouselBtns);
+  updateCarouselBtns();
 
 
   /* ── 2. HAMBURGER MENU ── */
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.querySelector('.nav-links');
+  const hamburger    = document.getElementById('hamburger');
+  const navLinkLists = document.querySelectorAll('.nav-links');
+
+  const setMenuOpen = (open) => {
+    navLinkLists.forEach(list => list.classList.toggle('open', open));
+    hamburger.setAttribute('aria-expanded', String(open));
+  };
 
   hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
+    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+    setMenuOpen(!isOpen);
   });
 
-  // Close mobile menu when a link is clicked
-  navLinks.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  navLinkLists.forEach(list => {
+    list.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => setMenuOpen(false));
+    });
   });
 
 
   /* ── 3. ACTIVE NAV LINK ON SCROLL ── */
-  const sections  = document.querySelectorAll('section[id]');
-  const navItems  = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-link');
 
   const activateNav = () => {
     const scrollY = window.scrollY + 80;
@@ -59,8 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (scrollY >= top && scrollY < top + height) {
         navItems.forEach(link => link.classList.remove('active'));
-        const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-        if (activeLink) activeLink.classList.add('active');
+        document.querySelectorAll(`.nav-link[href="#${id}"]`).forEach(link => link.classList.add('active'));
       }
     });
   };
@@ -79,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
         skillsAnimated = true;
         skillFills.forEach(fill => {
           const targetWidth = fill.getAttribute('data-width');
-          // Slight delay per bar for a staggered effect
           setTimeout(() => {
             fill.style.width = targetWidth + '%';
           }, 100);
@@ -90,9 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const skillSection = document.querySelector('#skills');
   if (skillSection) {
-    const skillObserver = new IntersectionObserver(animateSkillBars, {
-      threshold: 0.2
-    });
+    const skillObserver = new IntersectionObserver(animateSkillBars, { threshold: 0.2 });
     skillObserver.observe(skillSection);
   }
 
@@ -110,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add('visible');
-          }, i * 80); // stagger by 80ms each
+          }, i * 80);
           revealObserver.unobserve(entry.target);
         }
       });
@@ -127,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const emailEl = document.getElementById('contact-email');
   const msgEl   = document.getElementById('contact-message');
 
-  // Helper: show/clear error on a field
   const setError = (input, msg) => {
     input.classList.add('invalid');
     let err = input.nextElementSibling;
@@ -147,12 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
       err.classList.remove('visible');
     }
   };
-
-  // Live validation on blur
-  [nameEl, emailEl, msgEl].forEach(input => {
-    input.addEventListener('blur', () => validateField(input));
-    input.addEventListener('input', () => clearError(input));
-  });
 
   const validateField = (input) => {
     const value = input.value.trim();
@@ -174,17 +170,20 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   };
 
+  [nameEl, emailEl, msgEl].forEach(input => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => clearError(input));
+  });
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Validate all fields
     const nameOk  = validateField(nameEl);
     const emailOk = validateField(emailEl);
     const msgOk   = validateField(msgEl);
 
     if (!nameOk || !emailOk || !msgOk) return;
 
-    // All valid — show success alert
     const senderName = nameEl.value.trim();
     alert(
       `✅ Thank you for contacting me, ${senderName}!\n\n` +
@@ -192,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `— Maria Hanna`
     );
 
-    // Reset form
     form.reset();
     [nameEl, emailEl, msgEl].forEach(clearError);
   });
@@ -209,4 +207,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-}); // end DOMContentLoaded
+});

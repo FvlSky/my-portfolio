@@ -14,7 +14,15 @@
 <header id="top-header">
     <div class="navbar-wrapper">
       <nav class="navbar">
-        
+
+        <button id="hamburger" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
         <ul class="nav-links left-links">
           <li><a href="#home" class="nav-link active">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
@@ -51,7 +59,6 @@
 <section id="home" class="section hero-section">
   <div class="container hero-layout">
     
-    <!-- Left Side: Text Content -->
     <div class="hero-content">
       <span class="pill-badge">YOUR FUTURE SOFTWARE ENGINEER</span>
       
@@ -135,16 +142,14 @@
 </div>
 
   <section id="about" class="section">
-    <div class="container" style="margin-top: -100px;">
+    <div class="container">
       <div class="section-header">
         <span class="section-label-blue">Get to Know Me</span>
         <h2 class="section-title">About Me</h2>
       </div>
 
-      <!-- Row 1: Bento — Bio (left) | Education + Stats (right) -->
       <div class="about-bento">
 
-        <!-- Personal Bio Card -->
         <div class="about-card bento-bio">
           <span class="about-card-label">Background</span>
           <h3>Hi, I'm Hanna ✦</h3>
@@ -155,7 +160,6 @@
             My work sits at the intersection of <span class="highlight-yellow"><u class="underline">design and engineering</u></span>. I thrive in environments where curiosity, creativity, and execution come together to build things that are not only functional but also intuitive and beautiful.
           </p>
 
-          <!-- Quick Stats Strip -->
           <div class="stats-strip">
             <div class="stat-item">
               <div class="stat-num">3<span class="stat-plus">+</span></div>
@@ -174,7 +178,6 @@
           </div>
         </div>
 
-        <!-- Education Card -->
         <div class="about-card bento-edu">
           <span class="about-card-label">Education</span>
           <h3>Academic Path</h3>
@@ -204,16 +207,13 @@
 
       </div>
 
-      <!-- Row 2: Hobbies + Goals -->
       <div class="about-grid" style="margin-top: 1.5rem;">
 
-        <!-- Hobbies & Interests Card -->
         <div class="about-card">
           <span class="about-card-label">Interests</span>
           <h3>Hobbies & Interests</h3>
           <p class="card-sub">Things I love when I'm not shipping code.</p>
 
-          <!-- Chip cloud — icons reference individual SVG files in assets/ -->
           <ul class="hobby-chips">
             <li class="hobby-chip" style="background: var(--accent-pink);">
               <img src="assets/icon-drawing.svg" width="14" height="14" alt="" aria-hidden="true" class="chip-icon">
@@ -249,7 +249,6 @@
             </li>
           </ul>
 
-          <!-- Three spotlight feature items -->
           <ul class="feature-list" style="margin-top: 1.75rem; border-top: 1px solid var(--border-light); padding-top: 1.5rem;">
             <li class="feature-item">
               <div class="feature-icon" style="background: var(--accent-pink);">
@@ -283,7 +282,6 @@
           </ul>
         </div>
 
-        <!-- Goals & Ambitions Card -->
         <div class="about-card goals-card">
           <span class="about-card-label">Vision</span>
           <h3>Goals & Ambitions</h3>
@@ -297,8 +295,8 @@
                 <div class="goal-line"></div>
               </div>
               <div class="goal-body">
-                <strong>Impactful Civic Tech</strong>
-                <p>Architect systems that bridge technology and public service — scalable solutions that actually reach everyday Filipinos.</p>
+                <strong>Engineering for Global Impact</strong>
+                <p>Architect and optimize large-scale systems at an industry-leading tech company. Focus on deploying solutions that drive meaningful, measurable improvements for society, the environment, and communities in need.</p>
               </div>
             </li>
 
@@ -308,8 +306,8 @@
                 <div class="goal-line"></div>
               </div>
               <div class="goal-body">
-                <strong>Advanced AI Research</strong>
-                <p>Pursue deeper academic work in HCI and machine unlearning — contributing to the ethical development of future LLMs.</p>
+                <strong>The Pursuit of Technical Mastery</strong>
+                <p>Push the boundaries of my development capabilities by tackling high-stakes, complex challenges. Actively explore emerging fields to discover and master the technical niche where I can deliver the most value.</p>
               </div>
             </li>
 
@@ -318,16 +316,15 @@
                 <div class="goal-number" style="background: var(--accent-blue);">03</div>
               </div>
               <div class="goal-body">
-                <strong>Lead Interdisciplinary Teams</strong>
-                <p>Evolve into a Product Leader who bridges engineering and design — fluent in both code and creative direction.</p>
+                <strong>Cultivating Empowered Teams</strong>
+                <p>Step into leadership to guide ambitious, meaningful projects. Build and nurture an open, productive engineering culture where diverse disciplines collaborate seamlessly and great work is recognized.</p>
               </div>
             </li>
 
           </ol>
 
-          <!-- Motivational pull quote -->
           <blockquote class="about-quote">
-            "Build things that matter, for people who deserve them."
+            "Building technology at scale to empower the people and environments that need it most."
           </blockquote>
         </div>
 
@@ -343,127 +340,327 @@
       </div>
 
       <div class="skills-grid">
+
         <div class="about-card">
-          <h3>Technical Expertise</h3>
-          
+          <span class="about-card-label">Proficiency</span>
+          <h3>Core Strengths</h3>
+
           <div class="form-group">
-            <label>React JS / JavaScript</label>
+            <label>React JS & JavaScript (ES6+)</label>
             <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 92%"></div></div>
           </div>
-          
+
           <div class="form-group">
-            <label>HTML / CSS / Tailwind</label>
+            <label>HTML / CSS / Tailwind CSS</label>
             <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 95%"></div></div>
           </div>
-          
+
           <div class="form-group">
-            <label>Figma / UI/UX Design</label>
+            <label>Figma & UI/UX Design</label>
             <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 90%"></div></div>
           </div>
-          
+
           <div class="form-group">
-            <label>Python & Machine Learning</label>
-            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 80%"></div></div>
+            <label>Python & Data Structures</label>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 85%"></div></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label>SQL & Database Design</label>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 82%"></div></div>
           </div>
         </div>
 
         <div class="about-card">
-          <h3>Technologies & Methodologies</h3>
-          <p style="margin-bottom: 1.5rem; color: var(--muted);">
-            Beyond languages, I utilize a variety of tools and frameworks to bring ideas to life efficiently.
-          </p>
-          
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <span class="tag">React JS</span>
-            <span class="tag">Tailwind CSS</span>
-            <span class="tag">Python</span>
-            <span class="tag">Figma</span>
-            <span class="tag">Java</span>
-            <span class="tag">C++</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">Supabase</span>
-            <span class="tag">Agile / Scrum</span>
-            <span class="tag">REST API</span>
-            <span class="tag">LLMs</span>
-            <span class="tag">Git & GitHub</span>
+          <span class="about-card-label">At a Glance</span>
+          <h3>Skill Matrix</h3>
+
+          <div class="table-scroll">
+            <table class="skills-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Tools</th>
+                  <th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Frontend Dev</td>
+                  <td>React JS, Tailwind CSS, Vite</td>
+                  <td><span class="level-badge level-expert">Expert</span></td>
+                </tr>
+                <tr>
+                  <td>Languages</td>
+                  <td>Python, Java, C++/C, C#, SQL</td>
+                  <td><span class="level-badge level-advanced">Advanced</span></td>
+                </tr>
+                <tr>
+                  <td>Databases</td>
+                  <td>MySQL, PostgreSQL, Supabase</td>
+                  <td><span class="level-badge level-advanced">Advanced</span></td>
+                </tr>
+                <tr>
+                  <td>UI/UX Design</td>
+                  <td>Figma, Photoshop, Canva</td>
+                  <td><span class="level-badge level-expert">Expert</span></td>
+                </tr>
+                <tr>
+                  <td>Dev Workflow</td>
+                  <td>Git, GitHub, Jira, Postman</td>
+                  <td><span class="level-badge level-advanced">Advanced</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
+
+       <div class="about-card skills-card-wide">
+  <span class="about-card-label">Full Toolkit</span>
+  <h3>Technologies & Concepts</h3>
+   <p class="card-sub" style="margin-top: 0px; margin-bottom: 0px;">Languages, frameworks, and tools I reach for across design and engineering work.</p>
+
+  <div class="table-scroll">
+  <table class="toolkit-table">
+    <thead>
+      <tr>
+        <th style="--row-accent: var(--accent-pink);">Languages</th>
+        <th style="--row-accent: var(--accent-blue);">Frameworks & Databases</th>
+        <th style="--row-accent: var(--accent-yellow);">Developer Tools</th>
+        <th style="--row-accent: var(--accent-blue);">Concepts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ul class="skills-list">
+            <li>Python</li>
+            <li>Java</li>
+            <li>C++ / C</li>
+            <li>C#</li>
+            <li>JavaScript (ES6+)</li>
+            <li>HTML / CSS</li>
+            <li>SQL</li>
+            <li>Bash / Shell</li>
+            <li>GDScript</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="skills-list">
+            <li>React JS</li>
+            <li>Tailwind CSS</li>
+            <li>Vite</li>
+          </ul>
+          <ul class="skills-list" style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border-light);">
+            <li>MySQL</li>
+            <li>PostgreSQL</li>
+            <li>Supabase</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="skills-list">
+            <li>Git & GitHub</li>
+            <li>VS Code</li>
+            <li>Postman</li>
+            <li>Jira</li>
+            <li>Godot</li>
+            <li>Google Colab</li>
+            <li>WordPress</li>
+            <li>Draw.io</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="skills-list">
+            <li>Data Structures & Algorithms</li>
+            <li>OOP</li>
+            <li>REST API Integration</li>
+            <li>RBAC</li>
+            <li>UI/UX Design</li>
+            <li>Agile / Scrum</li>
+            <li>System Design</li>
+            <li>Technical Documentation</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
       </div>
     </div>
   </section>
 
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">What I've Built</span>
-        <h2 class="section-title">Project Gallery</h2>
-      </div>
+<section id="projects" class="section">
+  <div class="container">
 
-      <div class="projects-grid">
+    <!-- ── Project Gallery ── -->
+    <div class="section-header">
+      <span class="section-label">What I've Built</span>
+      <h2 class="section-title">Project Gallery</h2>
+    </div>
+
+    <div class="projects-carousel-wrap">
+      <button class="carousel-btn carousel-btn-left" aria-label="Previous projects" hidden>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="projects-carousel" id="projectsCarousel">
 
         <div class="project-card bg-pink">
           <div class="project-img-wrap">
-            <img
-              src="https://placehold.co/400x300/ffffff/ffb6c1?text=Polymart"
-              alt="Polymart Web"
-              class="project-img"
-            />
+            <img src="/assets/polymart.png" alt="Polymart Web" class="project-img"/>
           </div>
           <h3 class="project-title">Polymart Web</h3>
-          <p class="project-caption">
-            A university-based e-commerce platform built with React JS and Tailwind CSS. 2nd Place – AWS Hackathon.
-          </p>
-          <a href="#" class="btn btn-outline" style="background: var(--surface)">View Project</a>
+          <p class="project-caption">A university-based e-commerce platform built with React JS and Tailwind CSS. 2nd Place – AWS Hackathon.</p>
         </div>
 
         <div class="project-card bg-blue">
           <div class="project-img-wrap">
-            <img
-              src="https://placehold.co/400x300/ffffff/add8e6?text=Takbo+Jusko"
-              alt="Takbo Jusko"
-              class="project-img"
-            />
+            <img src="https://placehold.co/400x300/ffffff/add8e6?text=Takbo+Jusko" alt="Takbo Jusko" class="project-img"/>
           </div>
           <h3 class="project-title">Takbo, Jusko!</h3>
-          <p class="project-caption">
-            A Filipino-themed 2D web game featuring an A* pathfinding AI hunter. Built in Godot and shipped in 2 weeks.
-          </p>
-          <a href="#" class="btn btn-outline" style="background: var(--surface)">Play Game</a>
+          <p class="project-caption">A Filipino-themed 2D web game featuring an A* pathfinding AI hunter. Built in Godot and shipped in 2 weeks.</p>
         </div>
 
         <div class="project-card bg-green">
           <div class="project-img-wrap">
-            <img
-              src="https://placehold.co/400x300/ffffff/90ee90?text=ML+Unlearning"
-              alt="Machine Unlearning"
-              class="project-img"
-            />
+            <img src="https://placehold.co/400x300/ffffff/90ee90?text=ML+Unlearning" alt="Machine Unlearning" class="project-img"/>
           </div>
           <h3 class="project-title">Machine Unlearning</h3>
-          <p class="project-caption">
-            An undergraduate thesis framework for LLMs to selectively forget training data, focusing on GDPR compliance.
-          </p>
-          <a href="#" class="btn btn-outline" style="background: var(--surface)">Read Paper</a>
+          <p class="project-caption">An undergraduate thesis framework for LLMs to selectively forget training data, focusing on GDPR compliance.</p>
         </div>
 
         <div class="project-card bg-yellow">
           <div class="project-img-wrap">
-            <img
-              src="https://placehold.co/400x300/ffffff/ffe4b5?text=Tugma"
-              alt="Tugma Platform"
-              class="project-img"
-            />
+            <img src="https://placehold.co/400x300/ffffff/ffe4b5?text=Tugma" alt="Tugma Platform" class="project-img"/>
           </div>
           <h3 class="project-title">Tugma Platform</h3>
-          <p class="project-caption">
-            A job-matching platform optimizing applicant ranking accuracy using a custom Merge Sort backend algorithm.
-          </p>
-          <a href="#" class="btn btn-outline" style="background: var(--surface)">View Prototype</a>
+          <p class="project-caption">A job-matching platform optimizing applicant ranking accuracy using a custom Merge Sort backend algorithm.</p>
+        </div>
+
+        <div class="project-card bg-pink">
+          <div class="project-img-wrap">
+            <img src="https://placehold.co/400x300/ffffff/ffb6c1?text=Melory" alt="Melory" class="project-img"/>
+          </div>
+          <h3 class="project-title">Melory</h3>
+          <p class="project-caption">A mood-based music discovery app that maps emotional states to curated playlists using a sentiment-driven recommendation engine.</p>
+        </div>
+
+        <div class="project-card bg-blue">
+          <div class="project-img-wrap">
+            <img src="https://placehold.co/400x300/ffffff/add8e6?text=BaraBara" alt="BaraBara" class="project-img"/>
+          </div>
+          <h3 class="project-title">BaraBara</h3>
+          <p class="project-caption">A collaborative task management tool designed for student teams, featuring real-time updates and sprint-style board views.</p>
+        </div>
+
+        <div class="project-card bg-green">
+          <div class="project-img-wrap">
+            <img src="https://placehold.co/400x300/ffffff/90ee90?text=MovieBox" alt="MovieBox" class="project-img"/>
+          </div>
+          <h3 class="project-title">MovieBox</h3>
+          <p class="project-caption">A movie discovery and watchlist platform integrated with the TMDB API, built with vanilla JS and a custom CSS design system.</p>
         </div>
 
       </div>
+
+      <button class="carousel-btn carousel-btn-right" aria-label="Next projects">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
-  </section>
+
+    <!-- ── Graphic Design Gallery ── -->
+    <div class="section-header" style="margin-top: 5rem;">
+      <span class="section-label-blue">Visual Work</span>
+      <h2 class="section-title">Graphic Design</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/ffd1dc/1a1a1a?text=Brand+Identity" alt="Brand Identity" class="gallery-img"/>
+        </div>
+        <figcaption>Brand Identity Design — Logo system and visual language for a student-run org.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/c2e2e8/1a1a1a?text=Event+Poster" alt="Event Poster" class="gallery-img"/>
+        </div>
+        <figcaption>Event Poster — Typography-led promotional material for a university tech summit.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/d1e2c4/1a1a1a?text=Social+Media" alt="Social Media Kit" class="gallery-img"/>
+        </div>
+        <figcaption>Social Media Kit — Cohesive post templates and story assets for a campus organization.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/fef0c5/1a1a1a?text=Magazine+Layout" alt="Magazine Layout" class="gallery-img"/>
+        </div>
+        <figcaption>Magazine Layout — Editorial spread featuring local student stories and feature writing.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/ffd1dc/1a1a1a?text=Infographic" alt="Infographic" class="gallery-img"/>
+        </div>
+        <figcaption>Data Infographic — Visual breakdown of thesis research findings on machine unlearning.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/c2e2e8/1a1a1a?text=UI+Mockup" alt="UI Mockup" class="gallery-img"/>
+        </div>
+        <figcaption>UI Mockup — High-fidelity Figma prototype for a fintech dashboard concept.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ── Digital Arts Gallery ── -->
+    <div class="section-header" style="margin-top: 5rem;">
+      <span class="section-label" style="background: var(--accent-green);">Digital Arts</span>
+      <h2 class="section-title">Illustrations</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/d1e2c4/1a1a1a?text=Character+Design" alt="Character Design" class="gallery-img"/>
+        </div>
+        <figcaption>Character Design — Original character concept for the Takbo, Jusko! game project.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/fef0c5/1a1a1a?text=Portrait+Study" alt="Portrait Study" class="gallery-img"/>
+        </div>
+        <figcaption>Portrait Study — Digital painting exploring soft lighting and warm color palettes.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/ffd1dc/1a1a1a?text=Fan+Art" alt="Fan Art" class="gallery-img"/>
+        </div>
+        <figcaption>Fan Art — Illustration inspired by Filipino folklore and mythology.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/c2e2e8/1a1a1a?text=Environment+Art" alt="Environment Art" class="gallery-img"/>
+        </div>
+        <figcaption>Environment Art — Scene concept for a 2D game level set in a Manila marketplace.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/d1e2c4/1a1a1a?text=Chibi+Stickers" alt="Chibi Stickers" class="gallery-img"/>
+        </div>
+        <figcaption>Chibi Sticker Pack — Set of 8 expressive sticker designs for a messaging app.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-img-wrap">
+          <img src="https://placehold.co/600x600/fef0c5/1a1a1a?text=Sketchbook" alt="Sketchbook Scans" class="gallery-img"/>
+        </div>
+        <figcaption>Sketchbook Pages — Digitized pencil sketches exploring gesture and form.</figcaption>
+      </figure>
+    </div>
+
+  </div>
+</section>
 
   <section id="contact" class="section">
     <div class="container">

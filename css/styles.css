@@ -1,3 +1,6 @@
+/* ════════════════════════════════════════════════════════════════
+   GLOBAL VARIABLES
+   ════════════════════════════════════════════════════════════════ */
 :root {
   --bg:           #FDFDFB;
   --surface:      #FFFFFF;
@@ -6,18 +9,15 @@
   --border:       #1A1A1A; 
   --border-light: #E5E7EB;
 
-  /* Pastels */
   --accent-pink:  #FFD1DC;
   --accent-blue:  #C2E2E8;
   --accent-green: #D1E2C4;
   --accent-yellow:#FEF0C5;
 
-  /* Typography */
   --font-display: 'Playfair Display', serif; 
   --font-body:    'Inter', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
 
-  /* Border Radii */
   --radius-sm:  8px;
   --radius-md:  16px;
   --radius-lg:  24px;
@@ -27,7 +27,9 @@
   --max-w: 1200px;
 }
 
-/* ── RESET & BASE ── */
+/* ════════════════════════════════════════════════════════════════
+   RESET & BASE
+   ════════════════════════════════════════════════════════════════ */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -60,7 +62,14 @@ a {
   transition: opacity var(--transition);
 }
 
-/* ── UTILITY ── */
+/* ════════════════════════════════════════════════════════════════
+   SHARED / GLOBAL COMPONENTS
+   Used across multiple page sections (layout shell, section headers,
+   buttons, text highlights, the reusable "card" component, the card
+   grid system, tags, and form elements).
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Layout shell ── */
 .container {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -69,12 +78,13 @@ a {
 
 .section {
   padding: 96px 0;
+  margin-top: -60px
 }
 
-/* ── SECTION HEADER ── */
+/* ── Section header (eyebrow + title), used by About/Skills/Projects/Contact ── */
 .section-header {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 50px;
 }
 
 .section-label {
@@ -114,7 +124,185 @@ a {
   letter-spacing: -0.02em;
 }
 
-/* ── NAVBAR ── */
+/* ── Buttons, used in Hero / Projects / Contact ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--accent-pink);
+}
+
+.btn:hover {
+  background: var(--border);
+  color: var(--surface);
+}
+
+.btn:hover::before {
+  background-color: var(--surface);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+.btn-outline::before {
+  background-color: var(--accent-blue);
+}
+
+/* ── Text highlight utilities, used in Hero (name) and About (bio copy) ── */
+.highlight-pink {
+  background-color: var(--accent-pink);
+  padding: 0 16px;
+  display: inline-block;
+}
+
+.highlight-yellow {
+  background-color: var(--accent-yellow);
+  color: var(--text);
+  padding: 2px 6px;
+  border-radius: 0;
+}
+
+.underline {
+  text-underline-offset: 4px;
+}
+
+/* ── Card component, used by About / Skills / Contact cards ── */
+.about-card, .contact-form-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: 4px 4px 0px var(--border);
+}
+
+.about-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.about-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.card-sub {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+/* ── Card grid system, used by About / Skills / Contact ── */
+.about-grid, .skills-grid, .contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* ── Tag pill, used in About (scholar badge) ── */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+/* ── Form elements, used in Skills (bar labels) and Contact (form) ── */
+.form-group label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  margin-bottom: 1.5rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-width: 2px;
+}
+
+.form-group input.invalid, .form-group textarea.invalid {
+  border-color: #D6486B;
+}
+
+.form-error {
+  display: none;
+  font-size: 0.78rem;
+  font-family: var(--font-body);
+  color: #D6486B;
+  margin-top: -1.1rem;
+  margin-bottom: 1rem;
+}
+
+.form-error.visible {
+  display: block;
+}
+
+/* ── Shared responsive ── */
+@media (max-width: 900px) {
+  .about-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Scroll reveal, used by About / Skills / Projects / Contact cards ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   NAVBAR
+   ════════════════════════════════════════════════════════════════ */
 #top-header {
   position: fixed;
   top: 0;
@@ -184,7 +372,6 @@ a {
   color: var(--text);
 }
 
-/* Icon Buttons */
 .nav-icons {
   display: flex;
   gap: 0.75rem;
@@ -209,7 +396,96 @@ a {
   border-color: var(--text);
 }
 
-/* ── HERO SECTION ── */
+/* ── Hamburger menu button (mobile only) ── */
+.hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.hamburger:hover {
+  background: var(--text);
+  color: var(--surface);
+}
+
+/* ── Navbar responsive ── */
+@media (max-width: 900px) {
+  .navbar {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .hamburger {
+    display: flex;
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .nav-logo {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .right-nav {
+    grid-row: 1;
+    grid-column: 3;
+    justify-content: flex-end;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    grid-column: 1 / -1;
+  }
+
+  .left-links.open {
+    grid-row: 2;
+  }
+
+  .right-links.open {
+    grid-row: 3;
+  }
+
+  .navbar:has(.nav-links.open) {
+    grid-template-rows: auto auto auto;
+    row-gap: 1.5rem;
+    height: auto;
+    padding-top: 1.25rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .navbar:has(.nav-links.open) .right-nav {
+    display: contents;
+  }
+
+  .navbar:has(.nav-links.open) .nav-icons {
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .navbar-wrapper:has(.nav-links.open) {
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   HERO SECTION (#home)
+   ════════════════════════════════════════════════════════════════ */
 .hero-section {
   min-height: 80vh;
   display: flex;
@@ -233,7 +509,6 @@ a {
   gap: 4rem;
 }
 
-/* Left Column */
 .hero-content {
   flex: 1;
   text-align: left;
@@ -263,37 +538,6 @@ a {
   margin-bottom: 1.5rem;
 }
 
-.highlight-pink {
-  background-color: var(--accent-pink);
-  padding: 0 16px;
-  display: inline-block;
-}
-
-.highlight-pink-v2 {
-  background-color: var(--accent-pink);
-  padding: 0 6px;
-  display: inline-block;
-}
-
-.highlight-blue {
-  background-color: var(--accent-blue);
-  color: var(--text);
-  padding: 2px 6px;
-  border-radius: 0;
-}
-
-.highlight-yellow {
-  background-color: var(--accent-yellow);
-  color: var(--text);
-  padding: 2px 6px;
-  border-radius: 0;
-}
-
-.underline {
-  text-underline-offset: 4px;
-}
-
-
 .hero-intro {
   font-size: 1.10rem;
   font-weight: 500;
@@ -309,52 +553,7 @@ a {
   justify-content: flex-start;
 }
 
-/* ── BUTTONS ── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 12px 28px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.btn::before {
-  content: '';
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--accent-pink);
-}
-
-.btn:hover {
-  background: var(--text);
-  color: var(--surface);
-}
-
-.btn:hover::before {
-  background-color: var(--surface);
-}
-
-.btn-outline {
-  border: 1px solid var(--border);
-  background: transparent;
-}
-
-.btn-outline::before {
-  background-color: var(--accent-blue);
-}
-
-/* ── RIGHT COLUMN: IMAGE COLLAGE ── */
+/* ── Right Column: Image Collage ── */
 .hero-images {
   flex: 1;
   position: relative;
@@ -362,7 +561,6 @@ a {
   margin-top: 50px;
 }
 
-/* ── NEW BASE IMAGE STYLING ── */
 .collage-img {
   position: absolute;
   object-fit: cover;
@@ -373,10 +571,9 @@ a {
 
 .collage-img:hover {
   transform: scale(1.05) translateZ(0);
-  z-index: 10 !important; /* Added !important so it always pops to the front on hover */
+  z-index: 10 !important;
 }
 
-/* ── POSITIONING FIXES ── */
 .polaroid {
   width: 200px;
   height: 240px;
@@ -404,7 +601,87 @@ a {
   z-index: 3;
 }
 
-/* Responsive adjustments for smaller screens */
+/* ── Decorative shapes scattered around the hero collage ── */
+.shape {
+    position: absolute;
+    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.1)); 
+    transition: transform 0.2s ease;
+    background-color: transparent; 
+    z-index: 4;
+}
+
+.star {
+    width: 50px;
+    height: 50px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    top: 20px;
+    right: 30px;
+    transform: rotate(-15deg);
+    background-color: #ffd700; 
+}
+
+.heart {
+  position: absolute;
+  width: 50px; 
+  height: 50px;
+  top: 40px;
+  left: 70px;
+  transform: rotate(-20deg);
+  z-index: 4;
+}
+
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 40px; 
+  border-radius: 25px 25px 0 0;
+  background-color: #ffb6c1; 
+}
+
+.heart::before {
+  left: 25px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.doodle {
+    width: 50px;
+    height: 30px;
+    border: 2px dashed #a9a9a9;
+}
+
+.doodle-1 {
+    bottom: 50px;
+    left: 10px;
+    transform: rotate(20deg);
+}
+
+.doodle-2 {
+    top: 140px;
+    left: 100px;
+    transform: rotate(-30deg);
+    width: 40px; 
+    height: 20px;
+    opacity: 50%;
+}
+
+/* ── Curtain separator (transition strip beneath the hero) ── */
+.curtain-separator {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background-color: var(--bg);
+}
+
+/* ── Hero responsive ── */
 @media (max-width: 968px) {
   .hero-layout {
     flex-direction: column;
@@ -424,155 +701,19 @@ a {
   }
   
   .hero-images {
-    width: 100%;
-    height: 350px;
+    display: none;
   }
 }
-/* ── ABOUT / SKILLS / CONTACT SECTIONS ── */
-.about-grid, .skills-grid, .contact-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+
+@media (max-width: 900px) {
+  .hero-name { font-size: clamp(2.5rem, 10vw, 4rem); }
 }
 
-.about-card, .contact-form-wrap {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem;
-  box-shadow: 4px 4px 0px var(--border); /* Hard shadow effect */
-}
+/* ════════════════════════════════════════════════════════════════
+   ABOUT SECTION (#about)
+   ════════════════════════════════════════════════════════════════ */
 
-.about-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-/* Progress bars simplified for minimal look */
-.skill-bar-track {
-  height: 6px;
-  background: var(--border-light);
-  border-radius: var(--radius-pill);
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-}
-
-.skill-bar-fill {
-  height: 100%;
-  background: var(--text);
-  border-radius: var(--radius-pill);
-}
-
-/* Tags */
-.tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  text-transform: uppercase;
-}
-
-/* ── PROJECTS SECTION (PASTEL COLUMNS) ── */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.project-card {
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform var(--transition);
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Pastel Utility Classes */
-.bg-pink { background-color: var(--accent-pink); }
-.bg-blue { background-color: var(--accent-blue); }
-.bg-green { background-color: var(--accent-green); }
-.bg-yellow { background-color: var(--accent-yellow); }
-
-.project-img-wrap {
-  width: 100%;
-  height: 200px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(0,0,0,0.1);
-}
-
-.project-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.project-title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: var(--text);
-}
-
-.project-caption {
-  font-size: 0.9rem;
-  color: var(--text);
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-  flex-grow: 1;
-}
-
-/* ── FORM ELEMENTS ── */
-.form-group label {
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-  display: block;
-}
-
-.form-group input, .form-group textarea {
-  width: 100%;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  font-family: var(--font-body);
-  margin-bottom: 1.5rem;
-}
-
-.form-group input:focus, .form-group textarea:focus {
-  outline: none;
-  border-width: 2px;
-}
-
-/* ── LIST RESETS — semantic lists used for hobby chips, feature items, and goals ── */
-/* These override browser default bullets/numbers; visual styling comes from the component classes below */
-ul.hobby-chips,
-ul.feature-list,
-ol.goals-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-/* ── ABOUT SECTION: BENTO GRID ── */
+/* ── Bento grid ── */
 .about-bento {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -585,33 +726,7 @@ ol.goals-list {
   flex-direction: column;
 }
 
-/* Small eyebrow label inside cards */
-.about-card-label {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--muted);
-  display: block;
-  margin-bottom: 0.6rem;
-}
-
-/* override the h3 in about-card so old rule doesn't conflict */
-.about-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0;
-}
-
-.card-sub {
-  font-size: 0.875rem;
-  color: var(--muted);
-  margin-top: 0.4rem;
-}
-
-/* ── QUICK STATS STRIP (inside bio card) ── */
+/* ── Quick stats strip (inside bio card) ── */
 .stats-strip {
   display: flex;
   align-items: center;
@@ -655,7 +770,7 @@ ol.goals-list {
   flex-shrink: 0;
 }
 
-/* ── EDUCATION TIMELINE ── */
+/* ── Education timeline ── */
 .edu-timeline {
   display: flex;
   flex-direction: column;
@@ -712,7 +827,15 @@ ol.goals-list {
   letter-spacing: 0.03em;
 }
 
-/* ── HOBBY CHIPS ── */
+ul.hobby-chips,
+ul.feature-list,
+ol.goals-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* ── Hobby chips ── */
 .hobby-chips {
   display: flex;
   flex-wrap: wrap;
@@ -744,14 +867,59 @@ ol.goals-list {
   flex-shrink: 0;
 }
 
-/* SVG files loaded as <img> inside chips and feature-icons */
 .chip-icon,
 .feature-icon img {
   flex-shrink: 0;
   display: block;
 }
 
-/* ── GOALS TIMELINE ── */
+/* ── Feature lists (hobby spotlight items) ── */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.feature-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1.5px solid var(--border);
+  box-shadow: 2px 2px 0px var(--border);
+}
+
+.feature-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--text);
+}
+
+.feature-item strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.feature-item p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Goals timeline ── */
 .goals-list {
   display: flex;
   flex-direction: column;
@@ -791,7 +959,7 @@ ol.goals-list {
 .goal-line {
   width: 2px;
   flex-grow: 1;
-  min-height: 28px;
+  min-height: 100px;
   background: var(--border-light);
   margin: 6px 0;
 }
@@ -814,9 +982,9 @@ ol.goals-list {
   line-height: 1.6;
 }
 
-/* ── ABOUT PULL QUOTE ── */
+/* ── About pull quote ── */
 .about-quote {
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 1rem 1.25rem;
   border-left: 3px solid var(--text);
   background: var(--accent-yellow);
@@ -829,14 +997,344 @@ ol.goals-list {
   line-height: 1.5;
 }
 
-/* ── RESPONSIVE: BENTO ── */
+/* ── About responsive ── */
 @media (max-width: 900px) {
   .about-bento {
     grid-template-columns: 1fr;
   }
 }
 
-/* ── FOOTER ── */
+/* ════════════════════════════════════════════════════════════════
+   SKILLS SECTION (#skills)
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Core Strengths card: progress bars ── */
+.skill-bar-track {
+  height: 6px;
+  background: var(--border-light);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: var(--text);
+  border-radius: var(--radius-pill);
+}
+
+/* ── Full Toolkit card: wide layout ── */
+.skills-card-wide {
+  grid-column: 1 / -1;
+}
+
+.skills-card-wide .card-sub {
+  color: var(--muted);
+  margin-bottom: 1.75rem;
+}
+
+/* ── Skill Matrix card: table ── */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.skills-table th {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: left;
+  color: var(--muted);
+  padding: 0 0.75rem 0.75rem 0;
+  border-bottom: 2px solid var(--border);
+}
+
+.skills-table td {
+  padding: 0.85rem 0.75rem 0.85rem 0;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: middle;
+}
+
+.skills-table tr:last-child td {
+  border-bottom: none;
+}
+
+.skills-table td:first-child {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.level-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.level-expert { background: var(--accent-green); }
+.level-advanced { background: var(--accent-blue); }
+.level-proficient { background: var(--accent-yellow); }
+
+/* ── Full Toolkit: table layout ── */
+.toolkit-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.75rem;
+  table-layout: fixed;
+}
+
+.toolkit-table thead th {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-align: left;
+  padding: 0 1.5rem 0.75rem 1rem;
+  border-bottom: 3px solid var(--row-accent, var(--border));
+}
+
+.toolkit-table thead th:last-child {
+  border-right: none;
+}
+
+.toolkit-table tbody td {
+  vertical-align: top;
+  padding: 1.25rem 1.5rem 1rem 1rem;
+}
+
+.toolkit-table tbody td:last-child {
+  border-right: none;
+}
+
+ul.skills-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.skills-list li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.skills-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 6px;
+  height: 6px;
+  background: var(--text);
+  border-radius: 1px;
+}
+/* ════════════════════════════════════════════════════════════════
+   PROJECTS SECTION (#projects)
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Carousel wrapper: positions nav arrows ── */
+.projects-carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ── The scrollable track ── */
+.projects-carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  flex: 1;
+  min-width: 0;
+  padding-top: 10px;
+}
+
+/* ── Each card: fixed width so exactly 4 show at once ── */
+.project-card {
+  flex: 0 0 calc(35% - 0.75rem);
+  min-width: 0;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--transition);
+  border: 1px solid var(--border);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ── Arrow buttons ── */
+.carousel-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 3px 3px 0px var(--border);
+}
+
+.carousel-btn:hover {
+  background: var(--text);
+  color: var(--surface);
+}
+
+.carousel-btn[hidden] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ── Pastel utility classes ── */
+.bg-pink   { background-color: var(--accent-pink); }
+.bg-blue   { background-color: var(--accent-blue); }
+.bg-green  { background-color: var(--accent-green); }
+.bg-yellow { background-color: var(--accent-yellow); }
+
+/* ── Project card internals ── */
+.project-img-wrap {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: inherit;
+}
+
+.project-title {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.project-caption {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* ── Graphic Design + Digital Arts galleries ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+}
+
+.gallery-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 3px 3px 0px var(--border);
+  transition: transform var(--transition);
+}
+
+.gallery-img-wrap:hover {
+  transform: translateY(-4px);
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-img-wrap:hover .gallery-img {
+  transform: scale(1.04);
+}
+
+.gallery-item figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding: 0.65rem 0.25rem 0;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  border-top: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .project-card {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .project-card {
+    flex: 0 0 85%;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   CONTACT SECTION (#contact)
+   This section reuses shared components defined above:
+   .contact-grid, .about-card / .contact-form-wrap, and .form-group.
+   No section-specific rules beyond those shared ones.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════════════════════════════ */
 #main-footer {
   background: var(--accent-pink);
   border-top: 1px solid var(--border);
@@ -849,162 +1347,4 @@ ol.goals-list {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  .hero-name { font-size: clamp(2.5rem, 10vw, 4rem); }
-  .about-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-}
-
-/* ── SHAPE STYLING ── */
-.shape {
-    position: absolute;
-    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.1)); 
-    transition: transform 0.2s ease;
-    background-color: transparent; 
-    z-index: 4;
-}
-
-/* ── INDIVIDUAL SHAPE PLACEHOLDERS & STYLING ── */
-
-.star {
-    width: 50px;
-    height: 50px;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    top: 20px;
-    right: 30px;
-    transform: rotate(-15deg);
-    background-color: #ffd700; 
-}
-
-.heart {
-  position: absolute;
-  width: 50px; 
-  height: 50px;
-  top: 40px;
-  left: 70px;
-  transform: rotate(-20deg);
-  z-index: 4;
-}
-
-.heart::before, .heart::after {
-  content: "";
-  position: absolute;
-  width: 25px;
-  height: 40px; 
-  border-radius: 25px 25px 0 0;
-  background-color: #ffb6c1; 
-}
-
-.heart::before {
-  left: 25px;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-
-.heart::after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-}
-
-
-.sparkle {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  top: 40px;
-  right: 120px;
-  transform: rotate(-15deg);
-  z-index: 4;
-
-  background:
-    radial-gradient(circle at 0 0, transparent 20px, #ffd700 21px) bottom right,
-    radial-gradient(circle at 100% 0, transparent 20px, #ffd700 21px) bottom left,
-    radial-gradient(circle at 0 100%, transparent 20px, #ffd700 21px) top right,
-    radial-gradient(circle at 100% 100%, transparent 20px, #ffd700 21px) top left;
-  background-size: 50% 50%;
-  background-repeat: no-repeat;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-}
-
-
-.doodle {
-    width: 50px;
-    height: 30px;
-    border: 2px dashed #a9a9a9;
-}
-
-.doodle-1 {
-    bottom: 50px;
-    left: 10px;
-    transform: rotate(20deg);
-}
-
-.doodle-2 {
-    top: 140px;
-    left: 100px;
-    transform: rotate(-30deg);
-    width: 40px; 
-    height: 20px;
-    opacity: 50%;
-}
-
-/* Add this to your styles.css */
-.curtain-separator {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  background-color: var(--bg); /* matches hero section bg */
-}
-
-/* ── FEATURE LISTS (Hobbies & Goals) ── */
-.feature-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1.25rem;
-}
-
-.feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.feature-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border: 1.5px solid var(--border);
-  /* Added a subtle shadow to the icons to match your cards */
-  box-shadow: 2px 2px 0px var(--border); 
-}
-
-/* Styles the new SVG icons */
-.feature-icon svg {
-  width: 22px;
-  height: 22px;
-  stroke: var(--text);
-}
-
-.feature-item strong {
-  display: block;
-  margin-bottom: 0.35rem;
-  font-size: 1rem;
-  color: var(--text);
-}
-
-.feature-item p {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.6;
-  margin: 0;
 }

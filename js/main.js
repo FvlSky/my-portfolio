@@ -1,10 +1,6 @@
-/* ============================================================
-   Maria Hanna Babasa — Portfolio JavaScript
-   ============================================================ */
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── 1. PROJECT CAROUSEL ── */
+  /* ── PROJECT CAROUSEL ── */
   const carousel = document.getElementById('projectsCarousel');
   const btnLeft  = document.querySelector('.carousel-btn-left');
   const btnRight = document.querySelector('.carousel-btn-right');
@@ -31,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCarouselBtns();
 
 
-  /* ── 2. HAMBURGER MENU ── */
+  /* ── HAMBURGER MENU ── */
   const hamburger    = document.getElementById('hamburger');
   const navLinkLists = document.querySelectorAll('.nav-links');
 
@@ -52,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  /* ── 3. ACTIVE NAV LINK ON SCROLL ── */
+  /* ── ACTIVE NAV LINK ON SCROLL ── */
   const sections = document.querySelectorAll('section[id]');
   const navItems = document.querySelectorAll('.nav-link');
 
@@ -75,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   activateNav();
 
 
-  /* ── 4. SKILL BAR ANIMATION ── */
+  /* ── SKILL BAR ANIMATION ── */
   const skillFills   = document.querySelectorAll('.skill-bar-fill');
   let skillsAnimated = false;
 
@@ -100,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* ── 5. SCROLL REVEAL ANIMATIONS ── */
+  /* ── SCROLL REVEAL ANIMATIONS ── */
   const revealElements = document.querySelectorAll(
     '.about-card, .project-card, .contact-form-wrap, .contact-info, .skills-col'
   );
@@ -124,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => revealObserver.observe(el));
 
 
-  /* ── 6. CONTACT FORM ── */
+  /* ── CONTACT FORM ── */
   const form    = document.getElementById('contact-form');
   const nameEl  = document.getElementById('contact-name');
   const emailEl = document.getElementById('contact-email');
@@ -184,19 +180,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!nameOk || !emailOk || !msgOk) return;
 
-    const senderName = nameEl.value.trim();
-    alert(
-      `✅ Thank you for contacting me, ${senderName}!\n\n` +
-      `I've received your message and will get back to you as soon as possible.\n\n` +
-      `— Maria Hanna`
-    );
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
 
-    form.reset();
-    [nameEl, emailEl, msgEl].forEach(clearError);
+    const formData = new FormData(form);
+
+    fetch('https://formspree.io/f/xgobggkw', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        const senderName = nameEl.value.trim();
+        alert(
+          `✅ Thank you for contacting me, ${senderName}!\n\n` +
+          `I've received your message and will get back to you as soon as possible.\n\n` +
+          `— Maria Hanna`
+        );
+
+        form.reset();
+        [nameEl, emailEl, msgEl].forEach(clearError);
+      } else {
+        alert("Oops! There was a problem submitting your form. Please try again.");
+      }
+    })
+    .catch(error => {
+      alert("Oops! Check your internet connection and try again.");
+    })
+    .finally(() => {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+    });
   });
 
 
-  /* ── 7. SMOOTH SCROLL POLISH (for older browsers) ── */
+  /* ── SMOOTH SCROLL POLISH (for older browsers) ── */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const target = document.querySelector(anchor.getAttribute('href'));

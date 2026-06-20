@@ -1261,6 +1261,9 @@ ul.skills-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .gallery-item {
@@ -1268,6 +1271,9 @@ ul.skills-list {
   flex-direction: column;
   gap: 0;
   margin: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .gallery-img-wrap {
@@ -1278,6 +1284,7 @@ ul.skills-list {
   border: 1px solid var(--border);
   box-shadow: 3px 3px 0px var(--border);
   transition: transform var(--transition);
+  justify-content: center;
 }
 
 .gallery-img-wrap:hover {
